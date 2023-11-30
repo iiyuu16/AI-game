@@ -20,6 +20,11 @@ MonoBehaviour:
   BaseOffset: 0
   Height: 1.87
   ObstacleAvoidanceType: 4
-  Radius: 0.5
+  Radius: 0.25
   Speed: 4
   StoppingDistance: 1
+  health: 100
+  attackDelay: 1
+  damage: 10
+  attackRadius: 1.5
+  IsRanged: 0
