@@ -18,4 +18,10 @@ public class EnemyScriptableObject : ScriptableObject
     public float Radius = 0.5f;
     public float Speed = 3f;
     public float StoppingDistance = 0.5f;
+
+    //base stats
+    public int health = 100;
+    public float attackDelay = 1f;
+    public int damage = 10;
+    public float attackRadius = 1.5f;
 }

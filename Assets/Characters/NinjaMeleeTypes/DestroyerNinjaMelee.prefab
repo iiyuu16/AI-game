@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7519490351213238220
+--- !u!1001 &3143585751399570111
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,33 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 857650563368032270, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 857650563368032270, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: attackDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2607190559957820414, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a8f452ba09dd1ed4cb31664cc3e8d67d, type: 2}
-    - target: {fileID: 4940571402615821880, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: m_Speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940571402615821880, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940571402615821880, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 150
+      objectReference: {fileID: 2100000, guid: 1e98f57af3bd2304784d9afff40322b5, type: 2}
+    - target: {fileID: 4056593546068278245, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: m_Name
+      value: DestroyerNinjaMeleeRadius
       objectReference: {fileID: 0}
     - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Name
-      value: FastNinjaMelee
+      value: DestroyerNinjaMelee
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.707
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.z
