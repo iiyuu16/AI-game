@@ -6,19 +6,19 @@ using UnityEngine;
 public class AttackRadius : MonoBehaviour
 {
     public SphereCollider Collider;
-    private List<IDamageable> Damageables = new List<IDamageable>();
+    protected List<IDamageable> Damageables = new List<IDamageable>();
     public int damage = 10;
     public float attackDelay = 0.5f;
     public delegate void AttackEvent(IDamageable Target);
     public AttackEvent onAttack;
-    private Coroutine attackCoroutine;
+    protected Coroutine attackCoroutine;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Collider = GetComponent<SphereCollider>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
@@ -32,7 +32,7 @@ public class AttackRadius : MonoBehaviour
         Debug.Log("ontriggerenter");
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
@@ -47,7 +47,7 @@ public class AttackRadius : MonoBehaviour
         Debug.Log("ontriggerexit");
     }
 
-    private IEnumerator Attack()
+    protected virtual IEnumerator Attack()
     {
         WaitForSeconds wait = new WaitForSeconds(attackDelay);
         yield return wait;
@@ -86,7 +86,7 @@ public class AttackRadius : MonoBehaviour
 
     }
 
-    private bool DisableDamageables(IDamageable Damageable)
+    protected bool DisableDamageables(IDamageable Damageable)
     {
         return Damageable != null && !Damageable.GetTransform().gameObject.activeSelf;
     }

@@ -24,4 +24,5 @@ public class EnemyScriptableObject : ScriptableObject
     public float attackDelay = 1f;
     public int damage = 10;
     public float attackRadius = 1.5f;
+    public bool IsRanged = false;
 }
