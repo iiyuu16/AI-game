@@ -18,7 +18,11 @@ public class Player : MonoBehaviour, IDamageable
     private void Awake()
     {
         attackRadius.onAttack += OnAttack;
+    }
 
+    public void Update()
+    {
+        Debug.Log("Player HP: " + Health);
     }
 
     private void OnAttack(IDamageable Target)

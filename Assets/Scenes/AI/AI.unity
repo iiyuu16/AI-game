@@ -1375,14 +1375,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2122597970}
   numberOfEnemiesToSpawn: 20
-  SpawnDelay: 5
+  SpawnDelay: 3
   Enemies:
   - {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
+  - {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
   - {fileID: 11400000, guid: 6a51c401167ec8b4e8996c0ef98390c5, type: 2}
-  - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
-  - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
+  - {fileID: 11400000, guid: 6a51c401167ec8b4e8996c0ef98390c5, type: 2}
+  - {fileID: 11400000, guid: 738697ccb6d56dd4e802e971c72fee3f, type: 2}
   - {fileID: 11400000, guid: 738697ccb6d56dd4e802e971c72fee3f, type: 2}
   - {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
+  - {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
+  - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
+  - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
+  - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
+  - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
   enemySpawnMethod: 0
 --- !u!4 &676075855
 Transform:
