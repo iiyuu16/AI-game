@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 [CreateAssetMenu(fileName = "Enemy Configuration", menuName = "ScriptableObject/Enemy Configuration")]
 public class EnemyScriptableObject : ScriptableObject
 {
@@ -21,8 +20,24 @@ public class EnemyScriptableObject : ScriptableObject
 
     //base stats
     public int health = 100;
-    public float attackDelay = 1f;
-    public int damage = 10;
-    public float attackRadius = 1.5f;
-    public bool IsRanged = false;
+    public Enemy Prefab;
+    public AttackScriptableObject AttackConfiguration;
+
+    public void SetupEnemy(Enemy enemy)
+    {
+        enemy.agent.acceleration = Acceleration;
+        enemy.agent.angularSpeed = AngularSpeed;
+        enemy.agent.areaMask = AreaMask;
+        enemy.agent.avoidancePriority = AvoidancePriority;
+        enemy.agent.baseOffset = BaseOffset;
+        enemy.agent.height = Height;
+        enemy.agent.obstacleAvoidanceType = ObstacleAvoidanceType;
+        enemy.agent.radius = Radius;
+        enemy.agent.speed = Speed;
+        enemy.agent.stoppingDistance = StoppingDistance;
+
+        enemy.movement.updateSpeed = AIUpdateInterval;
+
+        AttackConfiguration.SetupEnemy(enemy);
+    }
 }

@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ec406f79a2b5c764a860dff47818569a, type: 2}
     - target: {fileID: 3840462746077539488, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2
+      value: -11.52
       objectReference: {fileID: 0}
     - target: {fileID: 3840462746077539488, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3840462746077539488, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.49
+      value: 10.99
       objectReference: {fileID: 0}
     - target: {fileID: 3840462746077539488, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62,11 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
     - target: {fileID: 4469752439723193882, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_Name
-      value: FastNinjaRanged Variant
+      value: FastNinjaRanged
       objectReference: {fileID: 0}
     - target: {fileID: 7985854153128004635, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: attackDelay
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

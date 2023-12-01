@@ -171,21 +171,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2770195722642380735, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4daf766c3e6a6f74a916e57cb78a3354, type: 2}
     - target: {fileID: 2895538846803509205, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
       propertyPath: m_Name
       value: DestroyerNinjaRanged
-      objectReference: {fileID: 0}
-    - target: {fileID: 3323323345261223676, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
-      propertyPath: enemyScriptableObject
-      value: 
-      objectReference: {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
-    - target: {fileID: 3727457284300311406, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
-      propertyPath: m_Name
-      value: DestoyerNinjaRangedRadius
       objectReference: {fileID: 0}
     - target: {fileID: 5579070180971150787, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
       propertyPath: target
@@ -1449,7 +1437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &676075854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,8 +1451,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2122597970}
-  numberOfEnemiesToSpawn: 50
-  SpawnDelay: 10
+  numberOfEnemiesToSpawn: 20
+  SpawnDelay: 8
   enemyPrefab:
   - {fileID: 1198828548097384585}
   - {fileID: 1795779990}
@@ -1472,7 +1460,7 @@ MonoBehaviour:
   - {fileID: 1095033503}
   - {fileID: 3369079174276673273}
   - {fileID: 16111259}
-  enemySpawnMethod: 1
+  enemySpawnMethod: 0
 --- !u!4 &676075855
 Transform:
   m_ObjectHideFlags: 0
@@ -4420,26 +4408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BaseNinjaRanged
       objectReference: {fileID: 0}
-    - target: {fileID: 4469752439723193882, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6576403147851412492, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2122597970}
-    - target: {fileID: 7619522390027674594, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
-      propertyPath: m_Radius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985854153128004635, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
-      propertyPath: attackDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985854153128004635, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
-      propertyPath: bulletSpawnOffset.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
