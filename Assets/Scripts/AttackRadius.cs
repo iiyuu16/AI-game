@@ -29,7 +29,6 @@ public class AttackRadius : MonoBehaviour
                 attackCoroutine = StartCoroutine(Attack());
             }
         }
-        Debug.Log("ontriggerenter");
     }
 
     protected virtual void OnTriggerExit(Collider other)
@@ -44,7 +43,6 @@ public class AttackRadius : MonoBehaviour
                 attackCoroutine = null;
             }
         }
-        Debug.Log("ontriggerexit");
     }
 
     protected virtual IEnumerator Attack()

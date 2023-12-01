@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53faeaeb6d10566418343d87e6b228c8, type: 3}
-  m_Name: BaseNinjaRanged
+  m_Name: DestroyerNinjaRanged
   m_EditorClassIdentifier: 
   AIUpdateInterval: 0.1
   Acceleration: 8
@@ -18,13 +18,13 @@ MonoBehaviour:
   AreaMask: -1
   AvoidancePriority: 50
   BaseOffset: 0
-  Height: 1.75
+  Height: 0.175
   ObstacleAvoidanceType: 4
   Radius: 0.25
   Speed: 2
   StoppingDistance: 10
   health: 50
   attackDelay: 1
-  damage: 5
+  damage: 15
   attackRadius: 1
   IsRanged: 1
