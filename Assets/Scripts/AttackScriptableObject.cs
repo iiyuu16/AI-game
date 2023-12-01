@@ -29,6 +29,8 @@ public class AttackScriptableObject : ScriptableObject
             rangedAttackRadius.bulletPrefab = BulletPrefab;
             rangedAttackRadius.bulletSpawnOffset = BulletSpawnOffset;
             rangedAttackRadius.mask = LineOfSightLayers;
+
+            rangedAttackRadius.CreateBulletPool();
         }
     }
 }

@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53faeaeb6d10566418343d87e6b228c8, type: 3}
-  m_Name: FastNinjaMelee
+  m_Name: DestroyerNinjaMelee
   m_EditorClassIdentifier: 
   AIUpdateInterval: 0.1
-  Acceleration: 10
-  AngularSpeed: 150
+  Acceleration: 8
+  AngularSpeed: 120
   AreaMask: -1
   AvoidancePriority: 50
   BaseOffset: 0
   Height: 1.87
   ObstacleAvoidanceType: 4
   Radius: 0.25
-  Speed: 4
-  StoppingDistance: 1
-  health: 100
-  attackDelay: 1
-  damage: 10
-  attackRadius: 1.5
-  IsRanged: 0
+  Speed: 2
+  StoppingDistance: 0.5
+  health: 80
+  Prefab: {fileID: 9017287153553340944, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
+  AttackConfiguration: {fileID: 11400000, guid: e07c2185802a38d4b9a371d52cf5e0db, type: 2}
