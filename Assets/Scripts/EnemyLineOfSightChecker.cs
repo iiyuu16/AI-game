@@ -5,10 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyLineOfSightChecker : MonoBehaviour
 {
-#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public SphereCollider collider;
-#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
-
     public float fieldOfView = 90f;
     public LayerMask lineOfSightLayers;
 
