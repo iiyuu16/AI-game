@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     public float IdleLocationRadius = 4f;
     public float IdleMovespeedMultiplier = 0.5f;
     private int WaypointIndex = 0;
-    private Vector3[] waypoints = new Vector3[4];
+    public Vector3[] waypoints = new Vector3[4];
     public NavMeshTriangulation triangulation;
     public EnemyLineOfSightChecker lineOfSightChecker;
 
