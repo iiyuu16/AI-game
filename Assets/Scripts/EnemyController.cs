@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour
     private const string isRunning = "isRunning";
     private const string Jump = "Jump";
 
-    public EnemyState defaultState;
+    public EnemyState DefaultState;
     private EnemyState _state;
     public float IdleLocationRadius = 4f;
     public float IdleMovespeedMultiplier = 0.5f;
@@ -44,23 +45,23 @@ public class EnemyController : MonoBehaviour
 
     private void OnDisable()
     {
-        _state = defaultState;
+        _state = DefaultState;
     }
 
     private void HandleStateChange(EnemyState oldState, EnemyState newState)
     {
         if (oldState != newState)
         {
-            if (followCoroutine != null)
+            if(oldState == EnemyState.Idle)
             {
-                StopCoroutine(followCoroutine);
-            }
-
-            if (oldState == EnemyState.Idle)
-            { 
                 agent.speed /= IdleMovespeedMultiplier;
             }
 
+            if(followCoroutine != null)
+            {
+                StopCoroutine(followCoroutine);
+            }
+            
             switch (newState)
             {
                 case EnemyState.Idle:
@@ -77,28 +78,46 @@ public class EnemyController : MonoBehaviour
     }
 
     private IEnumerator DoIdleMotion()
-    { 
+    {
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
-        agent.speed *= IdleMovespeedMultiplier;
+
+        agent.speed += IdleMovespeedMultiplier;
 
         while (true)
         {
-            if (!agent.enabled || !agent.isOnNavMesh)
+            if(agent.enabled || !agent.isOnNavMesh)
             {
-                yield return wait;
+                yield return null;
             }
-            else if (agent.remainingDistance <= agent.stoppingDistance)
+            else if(agent.remainingDistance <= agent.stoppingDistance)
             {
                 Vector2 point = Random.insideUnitCircle * IdleLocationRadius;
                 NavMeshHit hit;
 
-                if (NavMesh.SamplePosition(agent.transform.position + new Vector3(point.x, 0, point.y), out hit, 2f, agent.areaMask))
+                if(NavMesh.SamplePosition(agent.transform.position + new Vector3(point.x, 0, point.y), out hit, 2f, agent.areaMask))
                 {
                     agent.SetDestination(hit.position);
                 }
             }
             yield return wait;
         }
+    }
+
+    public void Spawn()
+    {
+        for(int  i = 0; i <waypoints.Length; i++)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(triangulation.vertices[Random.Range(0, triangulation.vertices.Length)], out hit, 2f, agent.areaMask))
+            {
+                waypoints[i] = hit.position;
+            }
+            else
+            {
+                Debug.Log("unable to find position for navmesh near triangulation vertex");
+            }
+        }
+        OnStateChange?.Invoke(EnemyState.Spawn, DefaultState);
     }
 
     private IEnumerator DoPatrolMotion()
@@ -110,12 +129,12 @@ public class EnemyController : MonoBehaviour
 
         while (true)
         {
-            if (agent.isOnNavMesh && agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
+            if(agent.isOnNavMesh && agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
             {
                 WaypointIndex++;
 
-                if (WaypointIndex >= waypoints.Length)
-                { 
+                if(WaypointIndex >= waypoints.Length)
+                {
                     WaypointIndex = 0;
                 }
                 agent.SetDestination(waypoints[WaypointIndex]);
@@ -124,31 +143,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Spawn()
-    {
-        for (int i = 0; i < waypoints.Length; i++)
-        {
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(triangulation.vertices[Random.Range(0, triangulation.vertices.Length)], out hit, 2f, agent.areaMask))
-            {
-                waypoints[i] = hit.position;
-            }
-            else 
-            {
-                Debug.Log("Unable to find position for navmesh near Triangulation vertex!");
-            }
-        }
-        OnStateChange?.Invoke(EnemyState.Spawn, defaultState);
-    }
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
 
         lineOfSightChecker.onGainSight += HandleGainSight;
         lineOfSightChecker.onLoseSight += HandleLoseSight;
-
-        OnStateChange += HandleStateChange;
     }
 
     private void HandleGainSight(Player player)
@@ -158,7 +158,7 @@ public class EnemyController : MonoBehaviour
 
     private void HandleLoseSight(Player player)
     {
-        State = defaultState;
+        State = DefaultState;
     }
 
     private void Start()
@@ -169,7 +169,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator followTarget()
     {
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
-        while (enabled) 
+        while (enabled)
         {
             agent.SetDestination(target.transform.position);
             yield return null;

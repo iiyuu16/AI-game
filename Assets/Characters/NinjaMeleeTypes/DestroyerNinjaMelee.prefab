@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6301047507676118005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139695374138790439}
+  - component: {fileID: 4137809967142460022}
+  - component: {fileID: 8397666716896967230}
+  m_Layer: 9
+  m_Name: DestroyerNinjaMelee - LineOfSightRadius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139695374138790439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301047507676118005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4636418502442935309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4137809967142460022
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301047507676118005}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8397666716896967230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301047507676118005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Collider: {fileID: 4137809967142460022}
+  fieldOfView: 90
+  lineOfSightLayers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &3143585751399570111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20,9 +91,13 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1e98f57af3bd2304784d9afff40322b5, type: 2}
+    - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: lineOfSightChecker
+      value: 
+      objectReference: {fileID: 8397666716896967230}
     - target: {fileID: 4056593546068278245, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Name
-      value: DestroyerNinjaMeleeRadius
+      value: DestroyerNinjaMelee - AttackRadius
       objectReference: {fileID: 0}
     - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Name
@@ -34,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46669054
+      value: 0.53330946
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69,7 +144,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4422735784164097066, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 139695374138790439}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+--- !u!4 &4636418502442935309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+  m_PrefabInstance: {fileID: 3143585751399570111}
+  m_PrefabAsset: {fileID: 0}

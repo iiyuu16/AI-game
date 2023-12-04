@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class EnemyLineOfSightChecker : MonoBehaviour
 {
-    public SphereCollider collider;
+    public SphereCollider Collider;
     public float fieldOfView = 90f;
     public LayerMask lineOfSightLayers;
 
@@ -18,7 +18,7 @@ public class EnemyLineOfSightChecker : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<SphereCollider>();
+        Collider = GetComponent<SphereCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,10 +36,10 @@ public class EnemyLineOfSightChecker : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Player player;
-        if(other.TryGetComponent<Player>(out player))
+        if (other.TryGetComponent<Player>(out player))
         {
             onLoseSight?.Invoke(player);
-            if(checkForLineOfSightCoroutine != null)
+            if (checkForLineOfSightCoroutine != null)
             {
                 StopCoroutine(checkForLineOfSightCoroutine);
             }
@@ -52,9 +52,9 @@ public class EnemyLineOfSightChecker : MonoBehaviour
         if(Vector3.Dot(transform.forward, direction) >= Mathf.Cos(fieldOfView))
         {
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, direction, out hit, collider.radius, lineOfSightLayers))
+            if(Physics.Raycast(transform.position, direction, out hit, Collider.radius, lineOfSightLayers))
             {
-                if(hit.transform.GetComponent<Player>() != null) 
+                if(hit.transform.GetComponent<Player>() != null)
                 {
                     onGainSight?.Invoke(player);
                     return true;
@@ -62,17 +62,15 @@ public class EnemyLineOfSightChecker : MonoBehaviour
             }
         }
         return false;
-    }    
+    }
 
     private IEnumerator CheckForLineOfSight(Player player)
     {
         WaitForSeconds wait = new WaitForSeconds(0.1f);
 
-        while(!CheckLineOfSight(player))
+        while (!CheckLineOfSight(player))
         {
             yield return wait;
         }
     }
-
-
 }

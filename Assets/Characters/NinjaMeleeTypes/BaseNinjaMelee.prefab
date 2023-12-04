@@ -69,7 +69,7 @@ MonoBehaviour:
   Collider: {fileID: 8825583263828745230}
   damage: 10
   attackDelay: 2
---- !u!1 &7115691157094085149
+--- !u!1 &4422735784164097066
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,9 +77,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 463166194601425416}
-  - component: {fileID: 6275313658205687715}
-  - component: {fileID: 5078012019790967930}
+  - component: {fileID: 1988356149269467639}
+  - component: {fileID: 3766671887256760721}
+  - component: {fileID: 3088154057788869445}
   m_Layer: 9
   m_Name: BaseNinjaMelee - LineOfSightRadius
   m_TagString: Untagged
@@ -87,13 +87,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &463166194601425416
+--- !u!4 &1988356149269467639
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115691157094085149}
+  m_GameObject: {fileID: 4422735784164097066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
@@ -102,13 +102,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7779858979790683826}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6275313658205687715
+--- !u!135 &3766671887256760721
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115691157094085149}
+  m_GameObject: {fileID: 4422735784164097066}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -121,21 +121,21 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5078012019790967930
+--- !u!114 &3088154057788869445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115691157094085149}
+  m_GameObject: {fileID: 4422735784164097066}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 6275313658205687715}
+  Collider: {fileID: 3766671887256760721}
   fieldOfView: 90
   lineOfSightLayers:
     serializedVersion: 2
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.08
+      value: 3.78
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       propertyPath: m_LocalPosition.y
@@ -182,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.51
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       propertyPath: m_LocalRotation.w
@@ -484,7 +484,7 @@ PrefabInstance:
       addedObject: {fileID: 2813490176092050843}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 463166194601425416}
+      addedObject: {fileID: 1988356149269467639}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4522b394956a4a4e8d7218bd660a002, type: 3}
       insertIndex: -1
@@ -575,10 +575,10 @@ MonoBehaviour:
   updateSpeed: 0.1
   agent: {fileID: 4940571402615821880}
   animator: {fileID: 2487927206021296025}
-  defaultState: 0
+  DefaultState: 0
   IdleLocationRadius: 4
   IdleMovespeedMultiplier: 0.5
-  lineOfSightChecker: {fileID: 0}
+  lineOfSightChecker: {fileID: 3088154057788869445}
 --- !u!95 &2487927206021296025
 Animator:
   serializedVersion: 5

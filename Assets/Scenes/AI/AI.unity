@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &119234571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 654794458160467536, guid: 4fb58640367714a4cb547cb1a142e8e0, type: 3}
+  m_PrefabInstance: {fileID: 1386869515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &159174567
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,17 +586,6 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 1
   m_Area: 2
---- !u!114 &318188481 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5078012019790967930, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-  m_PrefabInstance: {fileID: 1630334055}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &370621440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,20 +1385,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2122597970}
-  numberOfEnemiesToSpawn: 20
+  numberOfEnemiesToSpawn: 30
   SpawnDelay: 3
   Enemies:
   - {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
-  - {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
-  - {fileID: 11400000, guid: 6a51c401167ec8b4e8996c0ef98390c5, type: 2}
   - {fileID: 11400000, guid: 6a51c401167ec8b4e8996c0ef98390c5, type: 2}
   - {fileID: 11400000, guid: 738697ccb6d56dd4e802e971c72fee3f, type: 2}
-  - {fileID: 11400000, guid: 738697ccb6d56dd4e802e971c72fee3f, type: 2}
-  - {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
   - {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
   - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
-  - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
-  - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
   - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
   enemySpawnMethod: 0
 --- !u!4 &676075855
@@ -2086,6 +2080,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1495923636}
     m_Modifications:
+    - target: {fileID: 570708516337029393, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2122597970}
+    - target: {fileID: 570708516337029393, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
+      propertyPath: lineOfSightChecker
+      value: 
+      objectReference: {fileID: 1096834972}
     - target: {fileID: 4636418502442935309, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.574812
@@ -2514,6 +2516,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078440170}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1096834972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8397666716896967230, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
+  m_PrefabInstance: {fileID: 960324296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1154453063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2569,6 +2582,22 @@ PrefabInstance:
     - target: {fileID: 4469752439723193882, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576403147851412492, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2122597970}
+    - target: {fileID: 6576403147851412492, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
+      propertyPath: DefaultState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619522390027674594, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894176751932096227, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
+      propertyPath: fieldOfView
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3213,6 +3242,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4904783282935389282, guid: 4fb58640367714a4cb547cb1a142e8e0, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2122597970}
+    - target: {fileID: 4904783282935389282, guid: 4fb58640367714a4cb547cb1a142e8e0, type: 3}
+      propertyPath: lineOfSightChecker
+      value: 
+      objectReference: {fileID: 119234571}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3390,7 +3427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495923636}
   m_Layer: 0
-  m_Name: Enemies
+  m_Name: EnemiesPrefabs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3417,6 +3454,17 @@ Transform:
   - {fileID: 2004062622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505796270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3088154057788869445, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+  m_PrefabInstance: {fileID: 1630334055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1509491261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,24 +3582,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2122597970}
     - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: defaultState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: IdleLocationRadius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: lineOfSightChecker
       value: 
-      objectReference: {fileID: 318188481}
-    - target: {fileID: 4056593546068278245, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: m_Name
-      value: BaseNinjaMelee - AttackRadius
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1505796270}
     - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Name
       value: BaseNinjaMelee
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3659,6 +3699,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8558563574911432643, guid: da8950eb0066fc8429ab8ceac37f88d1, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2122597970}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4196,6 +4240,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5579070180971150787, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2122597970}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
