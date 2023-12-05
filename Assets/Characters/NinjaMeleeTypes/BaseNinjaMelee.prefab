@@ -121,7 +121,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3088154057788869445
 MonoBehaviour:
@@ -578,6 +578,11 @@ MonoBehaviour:
   DefaultState: 0
   IdleLocationRadius: 4
   IdleMovespeedMultiplier: 0.5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   lineOfSightChecker: {fileID: 3088154057788869445}
 --- !u!95 &2487927206021296025
 Animator:

@@ -17,12 +17,13 @@ public class EnemyController : MonoBehaviour
     private const string isRunning = "isRunning";
     private const string Jump = "Jump";
 
-    public EnemyState DefaultState;
+    public EnemyState DefaultState = EnemyState.Spawn;
     private EnemyState _state;
     public float IdleLocationRadius = 4f;
     public float IdleMovespeedMultiplier = 0.5f;
     private int WaypointIndex = 0;
-    public Vector3[] waypoints = new Vector3[4];
+    //public Vector3[] waypoints = new Vector3[4];
+    public Transform[] waypoints = new Transform[4];
     public NavMeshTriangulation triangulation;
     public EnemyLineOfSightChecker lineOfSightChecker;
 
@@ -65,12 +66,15 @@ public class EnemyController : MonoBehaviour
             switch (newState)
             {
                 case EnemyState.Idle:
+                    Debug.Log("entering idle state");
                     followCoroutine = StartCoroutine(DoIdleMotion());
                     break;
                 case EnemyState.Patrol:
+                    Debug.Log("entering patrol state");
                     followCoroutine = StartCoroutine(DoPatrolMotion());
                     break;
                 case EnemyState.Chase:
+                    Debug.Log("entering chase state");
                     followCoroutine = StartCoroutine(followTarget());
                     break;
             }
@@ -105,19 +109,27 @@ public class EnemyController : MonoBehaviour
 
     public void Spawn()
     {
-        for(int  i = 0; i <waypoints.Length; i++)
+        for (int i = 0; i < waypoints.Length; i++)
         {
             NavMeshHit hit;
             if (NavMesh.SamplePosition(triangulation.vertices[Random.Range(0, triangulation.vertices.Length)], out hit, 2f, agent.areaMask))
             {
-                waypoints[i] = hit.position;
+                waypoints[i].position = hit.position;
             }
             else
             {
-                Debug.Log("unable to find position for navmesh near triangulation vertex");
+                Debug.LogError("Unable to find position for navmesh near triangulation vertex");
             }
         }
+
         OnStateChange?.Invoke(EnemyState.Spawn, DefaultState);
+
+        // Debug statements
+        Debug.Log("Spawn method executed successfully.");
+        foreach (Transform waypoint in waypoints)
+        {
+            Debug.Log("Waypoint position: " + waypoint.position);
+        }
     }
 
     private IEnumerator DoPatrolMotion()
@@ -125,23 +137,37 @@ public class EnemyController : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         yield return new WaitUntil(() => agent.enabled && agent.isOnNavMesh);
-        agent.SetDestination(waypoints[WaypointIndex]);
 
         while (true)
         {
-            if(agent.isOnNavMesh && agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
+            if (agent.isOnNavMesh && agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
             {
-                WaypointIndex++;
+                target = waypoints[WaypointIndex];
 
-                if(WaypointIndex >= waypoints.Length)
+                agent.SetDestination(target.position);
+
+                yield return new WaitUntil(() => agent.remainingDistance <= agent.stoppingDistance);
+
+                DoIdleMotion();
+                yield return new WaitForSeconds(3f);
+
+                WaypointIndex++;
+                if (WaypointIndex >= waypoints.Length)
                 {
                     WaypointIndex = 0;
                 }
-                agent.SetDestination(waypoints[WaypointIndex]);
+
+                target = waypoints[WaypointIndex];
+
+                State = EnemyState.Patrol;
+
+                agent.SetDestination(target.position);
             }
             yield return wait;
         }
     }
+
+
 
     private void Awake()
     {
@@ -164,9 +190,13 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(followTarget());
+
+        OnStateChange += HandleStateChange;
+
+        State = DefaultState;
     }
 
-    private IEnumerator followTarget()
+    private IEnumerator followTarget() //chase
     {
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
         while (enabled)
