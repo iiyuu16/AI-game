@@ -17,15 +17,15 @@ public class EnemyController : MonoBehaviour
     private const string isRunning = "isRunning";
     private const string Jump = "Jump";
 
-    public EnemyState DefaultState = EnemyState.Spawn;
+    public EnemyState DefaultState;
     private EnemyState _state;
     public float IdleLocationRadius = 4f;
     public float IdleMovespeedMultiplier = 0.5f;
     private int WaypointIndex = 0;
-    //public Vector3[] waypoints = new Vector3[4];
-    public Transform[] waypoints = new Transform[4];
+    public Vector3[] waypoints = new Vector3[4];
     public NavMeshTriangulation triangulation;
     public EnemyLineOfSightChecker lineOfSightChecker;
+    public EnemyScriptableObject EnemyScriptableObject;
 
     public EnemyState State
     {
@@ -46,18 +46,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnDisable()
     {
-        _state = DefaultState;
+        _state = EnemyScriptableObject.DefaultState;
     }
 
     private void HandleStateChange(EnemyState oldState, EnemyState newState)
     {
         if (oldState != newState)
         {
-            if(oldState == EnemyState.Idle)
-            {
-                agent.speed /= IdleMovespeedMultiplier;
-            }
-
             if(followCoroutine != null)
             {
                 StopCoroutine(followCoroutine);
@@ -89,9 +84,9 @@ public class EnemyController : MonoBehaviour
 
         while (true)
         {
-            if(agent.enabled || !agent.isOnNavMesh)
+            if(!agent.enabled || !agent.isOnNavMesh)
             {
-                yield return null;
+                yield return wait;
             }
             else if(agent.remainingDistance <= agent.stoppingDistance)
             {
@@ -114,7 +109,7 @@ public class EnemyController : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(triangulation.vertices[Random.Range(0, triangulation.vertices.Length)], out hit, 2f, agent.areaMask))
             {
-                waypoints[i].position = hit.position;
+                waypoints[i] = hit.position;
             }
             else
             {
@@ -122,14 +117,7 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        OnStateChange?.Invoke(EnemyState.Spawn, DefaultState);
-
-        // Debug statements
-        Debug.Log("Spawn method executed successfully.");
-        foreach (Transform waypoint in waypoints)
-        {
-            Debug.Log("Waypoint position: " + waypoint.position);
-        }
+        OnStateChange?.Invoke(EnemyState.Spawn, EnemyScriptableObject.DefaultState);
     }
 
     private IEnumerator DoPatrolMotion()
@@ -137,31 +125,19 @@ public class EnemyController : MonoBehaviour
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         yield return new WaitUntil(() => agent.enabled && agent.isOnNavMesh);
+        agent.SetDestination(waypoints[WaypointIndex]);
 
         while (true)
         {
             if (agent.isOnNavMesh && agent.enabled && agent.remainingDistance <= agent.stoppingDistance)
             {
-                target = waypoints[WaypointIndex];
-
-                agent.SetDestination(target.position);
-
-                yield return new WaitUntil(() => agent.remainingDistance <= agent.stoppingDistance);
-
-                DoIdleMotion();
-                yield return new WaitForSeconds(3f);
-
                 WaypointIndex++;
+
                 if (WaypointIndex >= waypoints.Length)
                 {
                     WaypointIndex = 0;
                 }
-
-                target = waypoints[WaypointIndex];
-
-                State = EnemyState.Patrol;
-
-                agent.SetDestination(target.position);
+                agent.SetDestination(waypoints[WaypointIndex]);
             }
             yield return wait;
         }
@@ -175,6 +151,8 @@ public class EnemyController : MonoBehaviour
 
         lineOfSightChecker.onGainSight += HandleGainSight;
         lineOfSightChecker.onLoseSight += HandleLoseSight;
+
+        OnStateChange += HandleStateChange;
     }
 
     private void HandleGainSight(Player player)
@@ -184,16 +162,14 @@ public class EnemyController : MonoBehaviour
 
     private void HandleLoseSight(Player player)
     {
-        State = DefaultState;
+        State = EnemyScriptableObject.DefaultState;
     }
 
     private void Start()
     {
-        StartCoroutine(followTarget());
-
+        State = EnemyScriptableObject.DefaultState;
         OnStateChange += HandleStateChange;
-
-        State = DefaultState;
+        
     }
 
     private IEnumerator followTarget() //chase
@@ -203,25 +179,6 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
             yield return null;
-        }
-    }
-
-    void Update()
-    {
-        if (target != null)
-        {
-            agent.SetDestination(target.position);
-
-            animator.SetBool(isRunning, agent.velocity.magnitude > 0.01f);
-
-            if (agent.isOnOffMeshLink)
-            {
-                animator.SetTrigger(Jump);
-            }
-        }
-        else
-        {
-            Debug.LogError("Player reference not set on EnemyController.");
         }
     }
 }

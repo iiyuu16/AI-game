@@ -575,15 +575,15 @@ MonoBehaviour:
   updateSpeed: 0.1
   agent: {fileID: 4940571402615821880}
   animator: {fileID: 2487927206021296025}
-  DefaultState: 0
   IdleLocationRadius: 4
   IdleMovespeedMultiplier: 0.5
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: -1.889823e+19, y: 1.002e-42, z: 8.375053e-10}
+  - {x: 0.00000016877814, y: 1.3052591e-38, z: 9.99e-43}
+  - {x: 4.6e-44, y: 0.00017489196, z: -1.889823e+19}
+  - {x: 1.002e-42, y: -1.88983e+19, z: 1.002e-42}
   lineOfSightChecker: {fileID: 3088154057788869445}
+  EnemyScriptableObject: {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
 --- !u!95 &2487927206021296025
 Animator:
   serializedVersion: 5

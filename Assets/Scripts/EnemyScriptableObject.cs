@@ -23,6 +23,11 @@ public class EnemyScriptableObject : ScriptableObject
     public Enemy Prefab;
     public AttackScriptableObject AttackConfiguration;
 
+    public float IdleLocationRadius = 4f;
+    public float IdleMovespeedMultiplier = 0.5f;
+    public int WaypointIndex = 0;
+    public EnemyState DefaultState;
+
     public void SetupEnemy(Enemy enemy)
     {
         enemy.agent.acceleration = Acceleration;
@@ -35,6 +40,8 @@ public class EnemyScriptableObject : ScriptableObject
         enemy.agent.radius = Radius;
         enemy.agent.speed = Speed;
         enemy.agent.stoppingDistance = StoppingDistance;
+
+        enemy.movement.DefaultState = DefaultState;
 
         enemy.movement.updateSpeed = AIUpdateInterval;
 

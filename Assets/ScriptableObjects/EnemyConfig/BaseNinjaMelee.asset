@@ -26,3 +26,7 @@ MonoBehaviour:
   health: 100
   Prefab: {fileID: 6233989544142430383, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
   AttackConfiguration: {fileID: 11400000, guid: 56f7d5ae1610ff64c956d94939dd0503, type: 2}
+  IdleLocationRadius: 4
+  IdleMovespeedMultiplier: 3
+  WaypointIndex: 0
+  DefaultState: 3

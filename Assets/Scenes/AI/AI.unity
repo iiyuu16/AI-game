@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1371,7 +1371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &676075854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1385,15 +1385,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2122597970}
-  numberOfEnemiesToSpawn: 30
+  numberOfEnemiesToSpawn: 1
   SpawnDelay: 3
   Enemies:
   - {fileID: 11400000, guid: f3a4be9eb40f9cc41b2b96d371467c8d, type: 2}
-  - {fileID: 11400000, guid: 6a51c401167ec8b4e8996c0ef98390c5, type: 2}
-  - {fileID: 11400000, guid: 738697ccb6d56dd4e802e971c72fee3f, type: 2}
-  - {fileID: 11400000, guid: fee803a4db5ea25498524393819c58f5, type: 2}
-  - {fileID: 11400000, guid: 18250da4a86c70749a5b2d08928ba9a8, type: 2}
-  - {fileID: 11400000, guid: 23fe4ee3142016848a2566019246a3b4, type: 2}
   enemySpawnMethod: 0
 --- !u!4 &676075855
 Transform:
@@ -2114,7 +2109,7 @@ PrefabInstance:
     - target: {fileID: 570708516337029393, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2122597970}
+      objectReference: {fileID: 0}
     - target: {fileID: 570708516337029393, guid: a976b38878fa69d4a9b606d408076f15, type: 3}
       propertyPath: lineOfSightChecker
       value: 
@@ -2648,7 +2643,7 @@ PrefabInstance:
     - target: {fileID: 6576403147851412492, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2122597970}
+      objectReference: {fileID: 0}
     - target: {fileID: 6576403147851412492, guid: 9e06b068d79fed14ea2d84fa368d56dc, type: 3}
       propertyPath: DefaultState
       value: 0
@@ -3307,7 +3302,7 @@ PrefabInstance:
     - target: {fileID: 4904783282935389282, guid: 4fb58640367714a4cb547cb1a142e8e0, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2122597970}
+      objectReference: {fileID: 0}
     - target: {fileID: 4904783282935389282, guid: 4fb58640367714a4cb547cb1a142e8e0, type: 3}
       propertyPath: lineOfSightChecker
       value: 
@@ -3516,17 +3511,6 @@ Transform:
   - {fileID: 2004062622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1505796270 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3088154057788869445, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-  m_PrefabInstance: {fileID: 1630334055}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3db7abe6d9e2cb4e91272d94cd94f82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1509491261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,18 +3623,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1495923636}
     m_Modifications:
+    - target: {fileID: 3088154057788869445, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: fieldOfView
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088154057788869445, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: lineOfSightLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2122597970}
     - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: DefaultState
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
-      propertyPath: lineOfSightChecker
-      value: 
-      objectReference: {fileID: 1505796270}
     - target: {fileID: 3191876529498459054, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -3715,17 +3703,25 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3].z
       value: 7.59
       objectReference: {fileID: 0}
+    - target: {fileID: 3766671887256760721, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766671887256760721, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_Name
       value: BaseNinjaMelee
       objectReference: {fileID: 0}
     - target: {fileID: 6970530063712134152, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.78
+      value: -11.59
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3733,7 +3729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 7779858979790683826, guid: 481c9d32754a64b4781585b256cfe40d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3832,7 +3828,7 @@ PrefabInstance:
     - target: {fileID: 8558563574911432643, guid: da8950eb0066fc8429ab8ceac37f88d1, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2122597970}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4435,7 +4431,7 @@ PrefabInstance:
     - target: {fileID: 5579070180971150787, guid: 6f4e9d67e8701084e92145fe86d9600b, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 2122597970}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
